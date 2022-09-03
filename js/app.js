@@ -1,38 +1,44 @@
 const loadNewsCategories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
-      .then((res) => res.json())
-      .then((data) => displayNewsCategories(data.data.news_category))
-      .catch((error) => alert(error));
+    .then(res => res.json())
+    .then(data => displayNewsCategories(data.data.news_category))
+    .catch(error => alert(error));
 }
 
 const displayNewsCategories = (newsCategories) => {
     const newsCategoriesContainer = document.getElementById('news-categories-container');
     newsCategories.forEach(newsCategory => {
         const newsCategoryLi = document.createElement('li');
-        newsCategoryLi.classList.add("nav-item");
+        newsCategoryLi.classList.add("nav-item", "cursor-pointer");
         newsCategoryLi.innerHTML = `
-            <a class="nav-link" aria-current="page" onclick = "loadAllNews('${newsCategory.category_id}')" >${newsCategory.category_name}</a>
+            <a class="nav-link" aria-current="page" onclick = "loadAllNews(this, '${newsCategory.category_id}', '${newsCategory.category_name}')" >${newsCategory.category_name}</a>
         `;
         newsCategoriesContainer.appendChild(newsCategoryLi);
     });
 }
 
-const loadAllNews = categoryId => {
+const loadAllNews = (element, categoryId, categoryName) => {
+    
+    const activeCategory = document.querySelector(".nav-link.active");
+    activeCategory.classList.remove('active');
+    element.classList.add('active');
+
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => displayAllNews(data.data))
+    .then(data => displayAllNews(data.data, categoryName))
     .catch(error => alert(error));
 }
 
-const displayAllNews = allNews => {
-    console.log(allNews);
+const displayAllNews = (allNews, categoryName) => {
+    // console.log(allNews);
+    // console.log("display all news => ",categoryName)
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
-        console.log(news);
+        // console.log(news);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col-12');
         newsDiv.innerHTML = `
