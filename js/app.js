@@ -35,6 +35,12 @@ const loadAllNews = (element, categoryId, categoryName) => {
 const displayAllNews = (allNews, categoryName) => {
     // console.log(allNews);
     // console.log("display all news => ",categoryName)
+
+    const itemsFoundForCategoryContainer = document.getElementById('items-found-for-category-container');
+    itemsFoundForCategoryContainer.innerHTML = `<p>${allNews.length} items found for category ${categoryName}</p>`;
+
+    itemsFoundForCategoryContainer.innerHTML = `<p class="m-0">${allNews.length > 0 ? allNews.length+ ' items found for category ' + categoryName : 'No items found for category ' + categoryName}</p>`;
+
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
