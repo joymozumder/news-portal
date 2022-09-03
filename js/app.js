@@ -12,10 +12,18 @@ const displayNewsCategories = (newsCategories) => {
         const newsCategoryLi = document.createElement('li');
         newsCategoryLi.classList.add("nav-item");
         newsCategoryLi.innerHTML = `
-            <a class="nav-link" aria-current="page" href="#">${newsCategory.category_name}</a>
+            <a class="nav-link" aria-current="page" onclick = "loadAllNews('${newsCategory.category_id}')" >${newsCategory.category_name}</a>
         `;
         newsCategoriesContainer.appendChild(newsCategoryLi);
     });
+}
+
+const loadAllNews = categoryId => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data.data))
+    .catch(error => alert(error));
 }
 
 loadNewsCategories()
