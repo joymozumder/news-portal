@@ -67,7 +67,7 @@ const displayAllNews = (allNews, categoryName) => {
                     <div class="card mb-3 border p-3">
                         <div class="row g-0">
                             <div class="col-md-2">
-                                <img src="${news.thumbnail_url}" class="img-fluid rounded-start h-auto" alt="...">
+                                <img src="${news.thumbnail_url}" class="img-fluid rounded-start h-100 w-100" alt="...">
                             </div>
                             <div class="col-md-10">
                                 <div class="card-body">
@@ -90,7 +90,7 @@ const displayAllNews = (allNews, categoryName) => {
                                             <span class="ms-2">${news.rating.number != null ? news.rating.number : 'No data found'}</span>
                                         </div>
                                         <div>
-                                            <a class="cursor-pointer" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"><img src="images/bi_arrow-right-short.png" alt="" ></a>
+                                            <a class="cursor-pointer btn btn-primary" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
