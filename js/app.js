@@ -78,17 +78,17 @@ const displayAllNews = (allNews, categoryName) => {
                                         <div class="d-flex justify-content-md-start">
                                             <img class="rounded-circle img-fluid" width="50px"; src="${news.author.img}" alt="">
                                             <div class="ms-2 text-center">
-                                                <p class="m-0">${news.author.name ? news.author.name : 'No data found'}</p>
-                                                <p class="m-0">${news.author.published_date ? news.author.published_date.split(" ")[0] : 'No data found'} </p>
+                                                <p class="m-0">${news.author.name ? news.author.name : 'No data available'}</p>
+                                                <p class="m-0">${news.author.published_date ? news.author.published_date.split(" ")[0] : 'No data available'} </p>
                                             </div>
                                         </div>
                                         <div>
                                             <i class="fa fa-eye"></i>
-                                            <span class="ms-2">${news.total_view != null ? news.total_view : 'No data found'}</span>
+                                            <span class="ms-2">${news.total_view != null ? news.total_view : 'No data available'}</span>
                                         </div>
                                         <div>
                                             <i class="fa-solid fa-star text-warning"></i>
-                                            <span class="ms-2">${news.rating.number != null ? news.rating.number : 'No data found'}</span>
+                                            <span class="ms-2">${news.rating.number != null ? news.rating.number : 'No data available'}</span>
                                         </div>
                                         <div>
                                             <a class="cursor-pointer btn btn-primary" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details <i class="fa fa-arrow-right"></i></a>
@@ -129,17 +129,17 @@ const displayNewsDetails = newsDetails => {
                                 <div class="d-flex justify-content-md-start">
                                     <img class="rounded-circle img-fluid" width="50px"; src="${newsDetails.author.img}" alt="">
                                     <div class="ms-2 ">
-                                    <p class="m-0"><strong>Author Name&nbsp;&nbsp;&nbsp;&nbsp;: </strong> ${newsDetails.author.name ? newsDetails.author.name : 'No data found'}</p>
-                                    <p class="m-0"><strong>Published Date&nbsp;: </strong> ${newsDetails.author.published_date ? newsDetails.author.published_date.split(" ")[0] : 'No data found'} </p>
+                                    <p class="m-0"><strong>Author Name&nbsp;&nbsp;&nbsp;&nbsp;: </strong> ${newsDetails.author.name ? newsDetails.author.name : 'No data available'}</p>
+                                    <p class="m-0"><strong>Published Date&nbsp;: </strong> ${newsDetails.author.published_date ? newsDetails.author.published_date.split(" ")[0] : 'No data available'} </p>
                                 </div>
                                 </div>
                                 <div>
                                     <i class="fa fa-eye"></i>
-                                    <span class="ms-2">${newsDetails.total_view != null ? newsDetails.total_view : 'No data found'}</span>
+                                    <span class="ms-2">${newsDetails.total_view != null ? newsDetails.total_view : 'No data available'}</span>
                                 </div>
                                 <div>
                                     <i class="fa-solid fa-star text-warning"></i>
-                                    <span class="ms-2">${newsDetails.rating.number != null ? newsDetails.rating.number : 'No data found'}</span>
+                                    <span class="ms-2">${newsDetails.rating.number != null ? newsDetails.rating.number : 'No data available'}</span>
                                 </div>
                                 
                             </div>
