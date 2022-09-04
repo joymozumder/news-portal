@@ -16,6 +16,9 @@ const displayNewsCategories = (newsCategories) => {
         `;
         newsCategoriesContainer.appendChild(newsCategoryLi);
     });
+    if(newsCategories.length>0){
+        loadAllNews(newsCategoriesContainer.firstElementChild.firstElementChild, newsCategories[0].category_id, newsCategories[0].category_name);
+    }
 }
 
 const loadAllNews = (element, categoryId, categoryName) => {
