@@ -1,3 +1,13 @@
+const toggleSpinner = isLoading =>{
+    const spinnerSection = document.getElementById('spinner');
+    if(isLoading){
+        spinnerSection.classList.remove('d-none')
+    }
+    else{
+        spinnerSection.classList.add("d-none");
+    }
+}
+
 const loadNewsCategories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
@@ -22,7 +32,7 @@ const displayNewsCategories = (newsCategories) => {
 }
 
 const loadAllNews = (element, categoryId, categoryName) => {
-    
+    toggleSpinner(true);
     const activeCategory = document.querySelector(".nav-link.active");
     activeCategory.classList.remove('active');
     element.classList.add('active');
@@ -87,6 +97,7 @@ const displayAllNews = (allNews, categoryName) => {
         `;
         newsContainer.appendChild(newsDiv);
     });
+    toggleSpinner(false);
 }
 
 const loadNewsDetails = newsId => {
@@ -106,7 +117,7 @@ const displayNewsDetails = newsDetails => {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <img src="${newsDetails.image_url}" class="img-fluid w-" alt="...">
+                            <img src="${newsDetails.image_url}" class="img-fluid w-100" alt="...">
                             <div class="mt-2">
                                 <p>${newsDetails.details}</p>
                             </div>
