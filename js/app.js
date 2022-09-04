@@ -91,7 +91,7 @@ const displayAllNews = (allNews, categoryName) => {
                                             <span class="ms-2">${news.rating.number != null ? news.rating.number : 'No data available'}</span>
                                         </div>
                                         <div>
-                                            <a class="cursor-pointer btn btn-primary" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details <i class="fa fa-arrow-right"></i></a>
+                                            <a class="cursor-pointer btn btn-primary my-1" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
