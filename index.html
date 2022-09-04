@@ -31,10 +31,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item me-lg-5">
-                            <a class="fw-bold nav-link active" aria-current="page" href="#">News</a>
+                            <a class="fw-bold nav-link active"  href="#" onclick="showNews()"
+                                id="news-element">News</a>
                         </li>
                         <li class="nav-item me-lg-5">
-                            <a class="fw-bold nav-link" href="#">Blog</a>
+                            <a class="fw-bold nav-link" href="#" onclick="showBlog()" id="blog-element">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -45,7 +46,7 @@
         </nav>
         <hr>
         <!-- All news category -->
-        <section>
+        <section id="news-categories-section">
             <ul class="nav nav-pills flex-column flex-sm-row justify-content-between" id="news-categories-container">
             </ul>
         </section>
@@ -60,22 +61,127 @@
             </div>
         </section>
         <!-- items found for category -->
-        <section class="mt-5">
+        <section class="mt-5" id="items-found-for-category-section">
             <div id="items-found-for-category-container" class="px-3 py-4 bg-white rounded-2">
 
             </div>
         </section>
         <!-- all news in a category -->
-        <section class="mt-5" id="all-news">
+        <section class="mt-5" id="all-news-section">
             <div class="row" id="news-container">
 
             </div>
         </section>
+        <section class="mt-5 d-none" id="blog-section">
+            <div class="row justify-content-center mb-5">
+                <div class="col-12 text-center mb-5">
+                    <h1>Question & Answer</h1>
+                </div>
+                <div class="col-12">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item border mb-4">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button fw-semibold px-4 py-4" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    What are the differences between var, let and const?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body px-4">
+                                    <strong>var : </strong>The scope of a var variable is functional scope. It can be
+                                    updated and re-declared into the scope. It can be declared without initialization.
+                                    It can be accessed without initialization as its default value is "undefined". <br>
+                                    <strong>let : </strong>The scope of a let variable is block scope. It can be updated
+                                    but cannot be re-declared into the scope. It can be declared without initialization.
+                                    It cannot be accessed without initialization otherwise it will give
+                                    'referenceError'. <br>
+                                    <strong>const: </strong> The scope of a const variable is block scope. It cannot be
+                                    updated or re-declared into the scope. It cannot be declared without initialization.
+                                    It cannot be accessed without initialization, as it cannot be declared without
+                                    initialization.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border mb-4">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button fw-semibold px-4 py-4 collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    What are the differences between arrow function and regular function?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body px-4">
+                                    Both regular and arrow functions work in a similar manner, But there are some
+                                    differences between them. Unlike regular functions, arrow functions do not have
+                                    their own this. Arguments objects are not available in arrow functions, but are
+                                    available in regular functions. Regular functions created using function
+                                    declarations or expressions are constructible and callable. Since regular functions
+                                    are constructible, they can be called using the new keyword. However, the arrow
+                                    functions are only callable and not constructible. Thus, we will get a run-time
+                                    error on trying to construct a non-constructible arrow functions using the new
+                                    keyword.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border mb-4">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button fw-semibold px-4 py-4 collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    What are the differences between map(), forEach(), filter() and find?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body px-4">
+                                    <strong>map() : </strong> map() creates a new array from calling a function for
+                                    every array element. It calls a function once for each element in an array. It does
+                                    not execute the function for empty elements. It does not change the original array.
+                                    <br>
+                                    <strong>forEach() : </strong> The forEach() method calls a function for each element
+                                    in an array.
+                                    It is not executed for empty elements. <br>
+                                    <strong>filter() : </strong> The filter() method creates a new array filled with
+                                    elements that pass a test provided by a function. It does not execute the function
+                                    for empty elements. It does not change the original array. <br>
+                                    <strong>find() : </strong> The find() method returns the value of the first element
+                                    that passes a test. It executes a function for each array element. It returns
+                                    undefined if no elements are found. It does not execute the function for empty
+                                    elements. It does not change the original array.
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border mb-4">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button fw-semibold px-4 py-4 collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                    Why we use template string?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body px-4">
+                                    Template string are literals delimited with backtick (`) characters, allowing for
+                                    multi-line strings, for string interpolation with embedded expressions, and for
+                                    special constructs called tagged
+                                    templates. We use this for string interpolation.
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section>
-            <!-- Button trigger modal -->
-
-
             <!-- Modal -->
             <div class="modal modal-lg fade" id="newsDetailsModal" tabindex="-1" aria-labelledby="newsDetailsModalLabel"
                 aria-hidden="true">

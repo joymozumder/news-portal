@@ -18,6 +18,7 @@ const loadNewsCategories = () => {
 
 const displayNewsCategories = (newsCategories) => {
     const newsCategoriesContainer = document.getElementById('news-categories-container');
+    newsCategoriesContainer.textContent = '';
     newsCategories.forEach(newsCategory => {
         const newsCategoryLi = document.createElement('li');
         newsCategoryLi.classList.add("nav-item", "cursor-pointer");
@@ -33,8 +34,8 @@ const displayNewsCategories = (newsCategories) => {
 
 const loadAllNews = (element, categoryId, categoryName) => {
     toggleSpinner(true);
-    const activeCategory = document.querySelector(".nav-link.active");
-    activeCategory.classList.remove('active');
+    const activeCategory = document.querySelector("#news-categories-container .nav-link.active");
+    activeCategory?.classList.remove('active');
     element.classList.add('active');
 
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
@@ -149,5 +150,45 @@ const displayNewsDetails = newsDetails => {
     `;
 }
 
+const showNews = () => {
+    const newsElement = document.getElementById("news-element");
+    const blogElement = document.getElementById("blog-element");
 
-loadNewsCategories()
+    const itemsFoundForCategorySection = document.getElementById("items-found-for-category-section");
+    const allNewsSection = document.getElementById("all-news-section");
+    const blogSection = document.getElementById("blog-section");
+    const newsCategoriesSection = document.getElementById("news-categories-section");
+
+    newsElement.classList.add("active");
+    blogElement.classList.remove("active");
+
+    itemsFoundForCategorySection.classList.remove("d-none");
+    allNewsSection.classList.remove("d-none");
+    newsCategoriesSection.classList.remove("d-none");
+
+    blogSection.classList.add("d-none");
+    loadNewsCategories();
+
+
+}
+
+const showBlog = () => {
+    const newsElement = document.getElementById("news-element");
+    const blogElement = document.getElementById("blog-element");
+
+    const itemsFoundForCategorySection = document.getElementById("items-found-for-category-section");
+    const allNewsSection = document.getElementById("all-news-section");
+    const blogSection = document.getElementById("blog-section");
+    const newsCategoriesSection = document.getElementById("news-categories-section");
+
+    newsElement.classList.remove("active");
+    blogElement.classList.add("active");
+
+    itemsFoundForCategorySection.classList.add("d-none");
+    allNewsSection.classList.add("d-none");
+    newsCategoriesSection.classList.add("d-none");
+
+    blogSection.classList.remove("d-none");
+}
+
+loadNewsCategories();
