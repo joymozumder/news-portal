@@ -47,7 +47,7 @@ const displayAllNews = (allNews, categoryName) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
-        // console.log(news);
+        console.log(news._id);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col-12');
         newsDiv.innerHTML = `
@@ -60,12 +60,12 @@ const displayAllNews = (allNews, categoryName) => {
                                 <div class="card-body">
                                     <h5 class="card-title fw-bold">${news.title}</h5>
                                     <p class="card-text">${news.details.length > 450 ? news.details.slice(0, 450)+'...' : news.details}</p>
-                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
                                         <div class="d-flex justify-content-md-start">
                                             <img class="rounded-circle img-fluid" width="50px"; src="${news.author.img}" alt="">
                                             <div class="ms-2 text-center">
                                                 <p class="m-0">${news.author.name}</p>
-                                                <p class="m-0">${news.author.published_date} </p>
+                                                <p class="m-0">${news.author.published_date.split(" ")[0]} </p>
                                             </div>
                                         </div>
                                         <div>
@@ -77,7 +77,7 @@ const displayAllNews = (allNews, categoryName) => {
                                             <span class="ms-2">${news.rating.number}</span>
                                         </div>
                                         <div>
-                                            <a><img src="images/bi_arrow-right-short.png" alt=""></a>
+                                            <a class="cursor-pointer" onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"><img src="images/bi_arrow-right-short.png" alt="" ></a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,6 +87,52 @@ const displayAllNews = (allNews, categoryName) => {
         `;
         newsContainer.appendChild(newsDiv);
     });
+}
+
+const loadNewsDetails = newsId => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayNewsDetails(data.data[0]))
+    .catch(error => alert(error));
+}
+
+const displayNewsDetails = newsDetails => {
+    console.log(newsDetails);
+    const newsDetailsContainer = document.getElementById('news-details-container');
+    newsDetailsContainer.innerHTML = `
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newsDetailsModalLabel">${newsDetails.title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="${newsDetails.image_url}" class="img-fluid w-" alt="...">
+                            <div class="mt-2">
+                                <p>${newsDetails.details}</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center flex-wrap mt-2">
+                                <div class="d-flex justify-content-md-start">
+                                    <img class="rounded-circle img-fluid" width="50px"; src="${newsDetails.author.img}" alt="">
+                                    <div class="ms-2 ">
+                                    <p class="m-0"><strong>Author Name&nbsp;&nbsp;&nbsp;&nbsp;: </strong> ${newsDetails.author.name}</p>
+                                    <p class="m-0"><strong>Published Date&nbsp;: </strong> ${newsDetails.author.published_date.split(" ")[0]} </p>
+                                </div>
+                                </div>
+                                <div>
+                                    <i class="fa fa-eye"></i>
+                                    <span class="ms-2">${newsDetails.total_view}</span>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <span class="ms-2">${newsDetails.rating.number}</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+    `;
 }
 
 
